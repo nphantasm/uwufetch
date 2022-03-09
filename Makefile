@@ -9,22 +9,34 @@ PLATFORM = $(shell uname)
 ifeq ($(PLATFORM), Linux)
 	PREFIX		= bin
 	LIBDIR		= lib
-	ETC_DIR		= /etc
-	MANDIR		= share/man/man1
 	ifeq ($(shell uname -o), Android)
 		DESTDIR	= /data/data/com.termux/files/usr
 	endif
+	ifneq ($(DESTDIR), /usr)
+		ETC_DIR	= $(DESTDIR)/etc
+	else
+		ETC_DIR = /etc
+	endif
+	MANDIR		= share/man/man1
 else ifeq ($(PLATFORM), Darwin)
 	PREFIX		= local/bin
 	LIBDIR		= local/lib
-	ETC_DIR		= /etc
+	ifneq ($(DESTDIR), /usr)
+		ETC_DIR	= $(DESTDIR)/etc
+	else
+		ETC_DIR = /etc
+	endif
 	MANDIR		= local/share/man/man1
 else ifeq ($(PLATFORM), FreeBSD)
 	CFLAGS		+= -D__FREEBSD__
 	CFLAGS_DEBUG += -D__FREEBSD__
 	PREFIX		= bin
 	LIBDIR		= lib
-	ETC_DIR		= /etc
+	ifneq ($(DESTDIR), /usr)
+		ETC_DIR	= $(DESTDIR)/etc
+	else
+		ETC_DIR = /etc
+	endif
 	MANDIR		= share/man/man1
 else ifeq ($(PLATFORM), windows32)
 	CC		= gcc
