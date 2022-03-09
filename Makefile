@@ -15,7 +15,7 @@ ifeq ($(PLATFORM), Linux)
 	ifneq ($(DESTDIR), /usr)
 		ETC_DIR	= $(DESTDIR)/etc
 	else
-		ETC_DIR = /etc
+		ETC_DIR	= /etc
 	endif
 	MANDIR		= share/man/man1
 else ifeq ($(PLATFORM), Darwin)
@@ -24,7 +24,7 @@ else ifeq ($(PLATFORM), Darwin)
 	ifneq ($(DESTDIR), /usr)
 		ETC_DIR	= $(DESTDIR)/etc
 	else
-		ETC_DIR = /etc
+		ETC_DIR	= /etc
 	endif
 	MANDIR		= local/share/man/man1
 else ifeq ($(PLATFORM), FreeBSD)
@@ -35,7 +35,7 @@ else ifeq ($(PLATFORM), FreeBSD)
 	ifneq ($(DESTDIR), /usr)
 		ETC_DIR	= $(DESTDIR)/etc
 	else
-		ETC_DIR = /etc
+		ETC_DIR	= /etc
 	endif
 	MANDIR		= share/man/man1
 else ifeq ($(PLATFORM), windows32)
